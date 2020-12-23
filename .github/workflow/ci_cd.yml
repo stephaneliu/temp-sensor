@@ -93,7 +93,7 @@ jobs:
 
       - name: Run Rubycritic
         run: |
-          rubycritic --mode-ci --no-browser --minimum-score 93
+          rubycritic --no-browser --minimum-score 93
 
       - name: Create Rubycritic artifact
         uses: actions/upload-artifact@v2
