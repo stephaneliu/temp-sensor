@@ -1,0 +1,208 @@
+name: CI/CD
+
+on: [push, pull_request]
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+      - name: Cache yarn
+        uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-)
+
+      - name: Install yarn
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install
+
+      - name: Install yarn dependencies
+        run: sudo yarn install
+
+      - name: Run Prettier
+        run: |
+          sudo yarn prettier --check '**/*.rb'
+
+  haml-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Run Haml Linter
+        run: bundle exec haml-lint app/views
+
+  rubocop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Run Rubocop
+        run: bundle exec rubocop
+
+  rubycritic:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+
+      - name: Install Rubycritic
+        run: |
+          gem install rubycritic
+
+      - name: Run Rubycritic
+        run: |
+          rubycritic --mode-ci --no-browser
+
+      - name: Create Rubycritic artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: rubycritic-output
+          path: tmp/rubycritic
+
+  security:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+
+      - name: Install Brakeman
+        run: gem install brakeman
+
+      - name: Run Brakeman
+        run: |
+          brakeman -f json > tmp/brakeman.json || exit 0
+
+      - name: Brakeman Report
+        uses: devmasx/brakeman-linter-action@v1.0.0
+        env:
+          REPORT_PATH: tmp/brakeman.json
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: postgres:12
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis
+        ports: ['6379:6379']
+        options: --entrypoint redis-server
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@master
+
+      - name: Install yarn
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+      - name: Cache yarn
+        uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-)
+
+      - name: Install yarn dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: 2.6.6
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get -yqq install libpq-dev
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Setup database
+        env:
+          PGUSER: postgres
+          PG_PASSWORD: postgres
+        run: bundle exec rails db:prepare
+
+      - name: Run tests
+        env:
+          PGUSER: postgres
+          PG_PASSWORD: postgres
+          REDIS_URL: redis://localhost:6379/0
+          RAILS_ENV: test
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+        run: |
+          COVERAGE=true CI=true bundle exec rspec spec
+
+      - name: Create coverage artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: code-coverage
+          path: coverage/
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: "./coverage/lcov/lcov.info"

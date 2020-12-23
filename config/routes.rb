@@ -1,3 +1,3 @@
-Rails.application.routes.draw do
-  root 'welcome#index'
-end
+# frozen_string_literal: true
+
+Rails.application.routes.draw { root "welcome#index" }

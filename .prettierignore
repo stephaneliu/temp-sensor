@@ -1,0 +1,6 @@
+db/schema.rb
+db/migrate/*
+coverage
+doc
+tmp
+vendor
