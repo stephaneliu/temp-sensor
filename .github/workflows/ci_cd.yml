@@ -194,8 +194,8 @@ jobs:
           name: code-coverage
           path: coverage/
 
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: "./coverage/lcov/lcov.info"
+      # - name: Coveralls
+      #   uses: coverallsapp/github-action@master
+      #   with:
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     path-to-lcov: "./coverage/lcov/lcov.info"
