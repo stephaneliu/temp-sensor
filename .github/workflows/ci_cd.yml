@@ -133,7 +133,7 @@ jobs:
         ports: ['5432:5432']
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWROD: password
+          POSTGRES_PASSWORD: password
       redis:
         image: redis
         ports: ['6379:6379']
@@ -182,6 +182,7 @@ jobs:
       - name: Run tests
         env:
           DATABASE_URL: postgres://postgres:password@localhost:5432/test
+          PG_USER: postgres
           REDIS_URL: redis://localhost:6379/0
           RAILS_ENV: test
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
