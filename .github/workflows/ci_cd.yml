@@ -159,7 +159,7 @@ jobs:
             ${{ runner.os }}-yarn-)
 
       - name: Install yarn dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
