@@ -34,6 +34,7 @@ end
 
 group :development, :test do
   gem "factory_bot_rails"
+  gem "haml-lint"
   gem "pry-byebug"
   gem "pry-rails"
   gem "rails-controller-testing"
