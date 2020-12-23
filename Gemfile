@@ -28,7 +28,7 @@ end
 
 group :test do
   gem "faker"
-  gem "simplecov"
+  gem "simplecov", require: false
   gem "simplecov-lcov"
 end
 
