@@ -177,8 +177,6 @@ jobs:
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
 
-      - name: Setup database
-
       - name: Run tests
         env:
           DATABASE_URL: postgres://postgres:password@localhost:5432/test
