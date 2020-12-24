@@ -21,6 +21,8 @@ Layout/LineLength:
     - "db/migrate/*"
   Max: 100
 
+Lint/UnusedBlockArgument:
+  Enabled: false
 Layout/MultilineOperationIndentation:
   EnforcedStyle: "indented"
 
@@ -82,3 +84,9 @@ Style/StringLiterals:
   EnforcedStyle: "double_quotes"
   Exclude:
     - "Guardfile"
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
