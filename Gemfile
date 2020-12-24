@@ -19,9 +19,18 @@ gem "webpacker", "~> 4.0"
 group :development do
   gem "annotate"
   gem "annotate_gem"
+  gem "guard"
+  gem "guard-brakeman", require: false
+  gem "guard-haml_lint"
+  gem "guard-livereload", require: false
+  gem "guard-process"
+  gem "guard-rspec"
+  gem "guard-rubocop"
+  gem "guard-rubycritic"
   gem "listen", "~> 3.2"
   gem "rubycritic", require: false
   gem "spring"
+  gem "spring-commands-rspec"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console", ">= 3.3.0"
 end
