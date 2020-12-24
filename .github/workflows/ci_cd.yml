@@ -224,6 +224,6 @@ jobs:
       - name: Deploy to temp-sensor-production
         uses: akhileshns/heroku-deploy@v3.7.8
         with:
-          heroku_app_name: "temp-sensor-staging"
+          heroku_app_name: "temp-sensor-production"
           heroku_email: "sliu@sjliu.com"
           heroku_api_key: ${{ SECRETS.HEROKU_API_KEY }}
