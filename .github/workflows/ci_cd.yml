@@ -198,14 +198,14 @@ jobs:
     runs-on: ubuntu-latest
 
     needs: [prettier, haml-lint, rubocop, rubycritic, security, test]
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == "refs/heads/main"
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
 
       - name: Deploy to temp-sensor-stagging
-        uses: akhileshins/heroku-deploy@v3.6.8
+        uses: akhileshns/heroku-deploy@v3.7.8
         with:
           heroku_app_name: "temp-sensor-staging"
           heroku_email: "sliu@sjliu.com"
@@ -221,15 +221,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get -yqq install apt-transport-https python3-software-properties
-          curl https://cli-assets.heroku.com/install.sh | sudo sh
-          sudo gem install dpl
-
-      - name: Deploy #{@heroku_project_name}-production
-        env:
-          HEROKU_API_KEY: ${{ SECRETS.HEROKU_API_KEY }}
-        run: |
-          sudo dpl --provider=heroku --app=#{@heroku_project_name}-production --api-key=$HEROKU_API_KEY
-          heroku run rake db:migrate --exit-code --app #{@heroku_project_name}-production
+      - name: Deploy to temp-sensor-production
+        uses: akhileshns/heroku-deploy@v3.7.8
+        with:
+          heroku_app_name: "temp-sensor-staging"
+          heroku_email: "sliu@sjliu.com"
+          heroku_api_key: ${{ SECRETS.HEROKU_API_KEY }}
