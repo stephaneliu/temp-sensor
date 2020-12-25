@@ -9,7 +9,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="antialiased font-sans bg-gray-200">
+    <div class="bg-gray-100 py-6">
+      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
