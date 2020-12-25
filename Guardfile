@@ -34,11 +34,6 @@ guard "livereload" do
 end
 
 group :rgr, halt_on_fail: true do
-  guard :haml_lint, all_on_start: true do
-    watch(/.+\.html.*\.haml$/)
-    watch(%r{(?:.+/)?\.haml-lint\.yml$}) { |m| File.dirname(m[0]) }
-  end
-
   rspec_options = {
     cmd: "bin/rspec --color --format doc",
     failed_mode: :keep,
@@ -106,6 +101,12 @@ group :rgr, halt_on_fail: true do
     watch(%r{^lib/.+\.rb$})
     watch("Gemfile")
   end
+
+  guard :haml_lint, all_on_start: true do
+    watch(/.+\.html.*\.haml$/)
+    watch(%r{(?:.+/)?\.haml-lint\.yml$}) { |m| File.dirname(m[0]) }
+  end
+
 end
 
 guard "process", name: "Webpacker", command: "bin/webpack --color --progress" do

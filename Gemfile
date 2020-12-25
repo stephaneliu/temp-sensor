@@ -9,7 +9,7 @@ gem "rails", "~> 6.0.3", ">= 6.0.3.4"
 
 gem "awesome_print"
 gem "bootsnap", ">= 1.4.2", require: false
-gem "devise", "~> 4.7", ">= 4.7.1"
+gem "clearance", "~> 2.3"
 gem "haml-rails", "~> 2.0"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.1"
