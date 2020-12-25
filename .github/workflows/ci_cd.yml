@@ -34,7 +34,7 @@ jobs:
 
       - name: Run Prettier
         run: |
-          sudo yarn prettier --check '**/*.rb'
+          yarn prettier --check '**/*.rb'
 
   haml-lint:
     runs-on: ubuntu-latest
