@@ -23,10 +23,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-)
 
-      - name: Install yarn dependencies
+      - name: Install node
         uses: actions/setup-node@v2
         with:
-            node-version: '15'
+          node-version: '15'
+
+      - name: Install yarn dependencies
         run: yarn install
 
       - name: Run Prettier
@@ -154,10 +156,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-)
 
-      - name: Install yarn dependencies
+      - name: Install node
         uses: actions/setup-node@v2
         with:
           node-version: '15'
+
+      - name: Install yarn dependencies
         run: yarn install
 
       - name: Setup Ruby
