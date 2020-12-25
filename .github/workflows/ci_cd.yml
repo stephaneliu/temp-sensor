@@ -29,6 +29,7 @@ jobs:
           node-version: '15'
 
       - name: Install yarn dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
       - name: Run Prettier
@@ -162,6 +163,7 @@ jobs:
           node-version: '15'
 
       - name: Install yarn dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
       - name: Setup Ruby
