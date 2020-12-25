@@ -34,7 +34,7 @@ guard "livereload" do
 end
 
 group :rgr, halt_on_fail: true do
-  guard :haml_lint, all_on_start: false do
+  guard :haml_lint, all_on_start: true do
     watch(/.+\.html.*\.haml$/)
     watch(%r{(?:.+/)?\.haml-lint\.yml$}) { |m| File.dirname(m[0]) }
   end
