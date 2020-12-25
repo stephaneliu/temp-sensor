@@ -214,6 +214,7 @@ GEM
       ast (~> 2.4.1)
     path_expander (1.1.0)
     pg (1.2.3)
+    prettier (1.1.0)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -423,6 +424,7 @@ DEPENDENCIES
   haml-rails (~> 2.0)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
+  prettier
   pry-byebug
   pry-rails
   puma (~> 4.1)
