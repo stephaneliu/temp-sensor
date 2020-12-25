@@ -108,6 +108,6 @@ group :rgr, halt_on_fail: true do
   end
 end
 
-guard "process", name: "Webpacker", command: "bin/webpack" do
+guard "process", name: "Webpacker", command: "bin/webpack --color --progress" do
   watch(%r{^app/javascript/\w+/*})
 end

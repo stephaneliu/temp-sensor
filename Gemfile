@@ -10,6 +10,7 @@ gem "rails", "~> 6.0.3", ">= 6.0.3.4"
 gem "awesome_print"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "devise", "~> 4.7", ">= 4.7.1"
+gem "haml-rails", "~> 2.0"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.1"
 gem "sass-rails", ">= 6"
@@ -22,12 +23,13 @@ group :development do
   gem "guard"
   gem "guard-brakeman", require: false
   gem "guard-haml_lint"
-  gem "guard-livereload", require: false
+  gem "guard-livereload"
   gem "guard-process"
   gem "guard-rspec"
   gem "guard-rubocop"
   gem "guard-rubycritic"
   gem "listen", "~> 3.2"
+  gem "rack-livereload"
   gem "rubycritic", require: false
   gem "spring"
   gem "spring-commands-rspec"
@@ -50,5 +52,5 @@ group :development, :test do
   gem "rspec-rails"
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
-  gem "shoulda-matchers", "~> 4.4"
+  gem "shoulda-matchers"
 end
