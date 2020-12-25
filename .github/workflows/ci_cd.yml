@@ -10,11 +10,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Install node
-        uses: actions/setup-node@v2
-        with:
-            node-version: '15'
-
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
@@ -29,6 +24,9 @@ jobs:
             ${{ runner.os }}-yarn-)
 
       - name: Install yarn
+        uses: actions/setup-node@v2
+        with:
+            node-version: '15'
         uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install
@@ -154,6 +152,9 @@ jobs:
           node-version: '15'
 
       - name: Install yarn
+        uses: actions/setup-node@v2
+        with:
+            node-version: '15'
         uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install
