@@ -11,7 +11,7 @@ if ENV["COVERAGE"]
         config.lcov_file_name = "lcov.info"
       end
       formatter SimpleCov::Formatter::MultiFormatter.new(
-                  [SimpleCov::Formatter::HTMLFormatter, SimpleCov::Formatter::LcovFormatter]
+                  [SimpleCov::Formatter::HTMLFormatter, SimpleCov::Formatter::LcovFormatter],
                 )
     else
       SimpleCov::Formatter::HTMLFormatter
@@ -23,8 +23,21 @@ if ENV["COVERAGE"]
     # https://github.com/simplecov-ruby/simplecov#branch-coverage-ruby--25I
     enable_coverage :branch
 
-    min_line_count = proc { |source_file| source_file.lines.count < 11 }
-    add_filter [min_line_count, /vendor/]
+    framework_files = %w[
+      channel.rb
+      connection.rb
+      application_controller.rb
+      application_helper.rb
+      application_job.rb
+      application_mailer.rb
+    ]
+
+    framework_class =
+      proc do |source_file|
+        framework_files.find { |file| file == source_file.filename.split("/").last } || false
+      end
+
+    add_filter [framework_class, /vendor/]
   end
 end
 
