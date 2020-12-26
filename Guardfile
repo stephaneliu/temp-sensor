@@ -106,7 +106,6 @@ group :rgr, halt_on_fail: true do
     watch(/.+\.html.*\.haml$/)
     watch(%r{(?:.+/)?\.haml-lint\.yml$}) { |m| File.dirname(m[0]) }
   end
-
 end
 
 guard "process", name: "Webpacker", command: "bin/webpack --color --progress" do
