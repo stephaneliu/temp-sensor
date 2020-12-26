@@ -1,5 +1,5 @@
-require "rails_helper"
-require "support/features/clearance_helpers"
+require "system_helper"
+require "system/support/clearance/clearance_helpers"
 
 RSpec.describe "Visitor resets password" do
   before { ActionMailer::Base.deliveries.clear }

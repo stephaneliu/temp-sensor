@@ -1,7 +1,7 @@
-require "rails_helper"
-require "support/features/clearance_helpers"
+require "system_helper"
+require "system/support/clearance/clearance_helpers"
 
-RSpec.describe "Visitor updates password" do
+RSpec.describe "Visitor updates password", :pending do
   it "with valid password" do
     user = user_with_reset_password
     update_password user, "newpassword"

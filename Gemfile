@@ -41,7 +41,10 @@ group :development do
 end
 
 group :test do
+  gem "capybara"
+  gem "cuprite"
   gem "faker"
+  gem "selenium-webdriver"
   gem "simplecov", require: false
   gem "simplecov-lcov", require: false
 end
