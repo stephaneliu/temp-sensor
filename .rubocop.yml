@@ -6,7 +6,7 @@ AllCops:
   NewCops: enable
   Exclude:
     - "bin/*"
-    - "db/schema.rb"
+    - "db/**/*"
     - "config/environments/**/*"
     - "node_modules/**/*"
     - "vendor/**/*"

@@ -35,6 +35,8 @@ group :development do
   gem "spring"
   gem "spring-commands-rspec"
   gem "spring-watcher-listen", "~> 2.0.0"
+  gem "terminal-notifier"
+  gem "terminal-notifier-guard"
   gem "web-console", ">= 3.3.0"
 end
 
