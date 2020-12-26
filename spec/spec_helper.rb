@@ -11,7 +11,7 @@ if ENV["COVERAGE"]
         config.lcov_file_name = "lcov.info"
       end
       formatter SimpleCov::Formatter::MultiFormatter.new(
-                  [SimpleCov::Formatter::HTMLFormatter, SimpleCov::Formatter::LcovFormatter],
+                  [SimpleCov::Formatter::HTMLFormatter, SimpleCov::Formatter::LcovFormatter]
                 )
     else
       SimpleCov::Formatter::HTMLFormatter

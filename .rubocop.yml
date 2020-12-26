@@ -48,6 +48,7 @@ RSpec/DescribeClass:
     - "spec/views/**/*"
     - "spec/routing/*"
     - "spec/features/**/*"
+    - "spec/system/**/*"
 
 RSpec/ExampleLength:
   Exclude:

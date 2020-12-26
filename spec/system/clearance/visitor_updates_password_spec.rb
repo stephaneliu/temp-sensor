@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "system_helper"
 require "system/support/clearance/clearance_helpers"
 
@@ -35,10 +37,7 @@ RSpec.describe "Visitor updates password", :pending do
   end
 
   def visit_password_reset_page_for(user)
-    visit edit_user_password_path(
-      user_id: user,
-      token: user.confirmation_token,
-    )
+    visit edit_user_password_path(user_id: user, token: user.confirmation_token)
   end
 
   def change_password_to(password)

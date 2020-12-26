@@ -36,6 +36,4 @@ module CupriteHelpers
   end
 end
 
-RSpec.configure do |config|
-  config.include CupriteHelpers, type: :system
-end
+RSpec.configure { |config| config.include CupriteHelpers, type: :system }

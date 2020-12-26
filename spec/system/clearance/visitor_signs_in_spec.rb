@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "system_helper"
 require "system/support/clearance/clearance_helpers"
 
@@ -38,8 +40,6 @@ RSpec.describe "Visitor signs in", :pending do
   end
 
   def expect_page_to_display_sign_in_error
-    expect(page.body).to include(
-      I18n.t("flashes.failure_after_create", sign_up_path: sign_up_path),
-    )
+    expect(page.body).to include(I18n.t("flashes.failure_after_create", sign_up_path: sign_up_path))
   end
 end

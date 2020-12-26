@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "system_helper"
 require "system/support/clearance/clearance_helpers"
 

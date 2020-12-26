@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Support
   module Clearance
     module ClearanceHelpers
@@ -49,6 +51,4 @@ module Support
   end
 end
 
-RSpec.configure do |config|
-  config.include Support::Clearance::ClearanceHelpers, type: :system
-end
+RSpec.configure { |config| config.include Support::Clearance::ClearanceHelpers, type: :system }
