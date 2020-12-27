@@ -1,0 +1,7 @@
+#!/bin/sh
+
+LANG="en_US.UTF-8" && \
+  if [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then
+    lolcommits -c --fork --device "$WEBCAM";
+    exit 0
+  fi

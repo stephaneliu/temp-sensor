@@ -9,7 +9,7 @@ gem "rails", "~> 6.0.3", ">= 6.0.3.4"
 
 gem "awesome_print"
 gem "bootsnap", ">= 1.4.2", require: false
-gem "devise", "~> 4.7", ">= 4.7.1"
+gem "clearance", "~> 2.3"
 gem "haml-rails", "~> 2.0"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.1"
@@ -29,17 +29,23 @@ group :development do
   gem "guard-rubocop"
   gem "guard-rubycritic"
   gem "listen", "~> 3.2"
+  gem "overcommit"
   gem "prettier"
   gem "rack-livereload"
   gem "rubycritic", require: false
   gem "spring"
   gem "spring-commands-rspec"
   gem "spring-watcher-listen", "~> 2.0.0"
+  gem "terminal-notifier"
+  gem "terminal-notifier-guard"
   gem "web-console", ">= 3.3.0"
 end
 
 group :test do
+  gem "capybara"
+  gem "cuprite"
   gem "faker"
+  gem "selenium-webdriver"
   gem "simplecov", require: false
   gem "simplecov-lcov", require: false
 end

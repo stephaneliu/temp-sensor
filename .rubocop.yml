@@ -6,7 +6,7 @@ AllCops:
   NewCops: enable
   Exclude:
     - "bin/*"
-    - "db/schema.rb"
+    - "db/**/*"
     - "config/environments/**/*"
     - "node_modules/**/*"
     - "vendor/**/*"
@@ -48,6 +48,7 @@ RSpec/DescribeClass:
     - "spec/views/**/*"
     - "spec/routing/*"
     - "spec/features/**/*"
+    - "spec/system/**/*"
 
 RSpec/ExampleLength:
   Exclude:
@@ -87,6 +88,9 @@ Style/StringLiterals:
     - "Guardfile"
 
 Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
   Enabled: false
 
 Style/TrailingCommaInHashLiteral:
