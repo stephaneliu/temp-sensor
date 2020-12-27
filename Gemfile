@@ -29,6 +29,7 @@ group :development do
   gem "guard-rubocop"
   gem "guard-rubycritic"
   gem "listen", "~> 3.2"
+  gem "overcommit"
   gem "prettier"
   gem "rack-livereload"
   gem "rubycritic", require: false
