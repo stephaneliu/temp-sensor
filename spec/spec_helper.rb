@@ -37,7 +37,7 @@ if ENV["COVERAGE"]
         framework_files.find { |file| file == source_file.filename.split("/").last } || false
       end
 
-    add_filter [framework_class, /vendor/]
+    add_filter([framework_class, /vendor/])
   end
 end
 
