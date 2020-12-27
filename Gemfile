@@ -11,6 +11,7 @@ gem "awesome_print"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "clearance", "~> 2.3"
 gem "haml-rails", "~> 2.0"
+gem "newrelic_rpm"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.1"
 gem "sass-rails", ">= 6"
