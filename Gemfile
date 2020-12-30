@@ -8,6 +8,7 @@ ruby "2.6.6"
 gem "rails", "~> 6.0.3", ">= 6.0.3.4"
 
 gem "awesome_print"
+gem "annotate"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "clearance", "~> 2.3"
 gem "haml-rails", "~> 2.0"
@@ -19,7 +20,6 @@ gem "turbolinks", "~> 5"
 gem "webpacker", "~> 4.0"
 
 group :development do
-  gem "annotate"
   gem "annotate_gem"
   gem "guard"
   gem "guard-brakeman", require: false
