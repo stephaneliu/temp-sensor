@@ -2,7 +2,7 @@
 
 module Overcommit
   module Hook
-    module PrePush
+    module PreCommit
       class RbPrettier < Base
         def run
           msg = "Prettier issues. Run `bundle exec rbprettier --write '**/*.rb'`"
