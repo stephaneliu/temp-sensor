@@ -31,8 +31,6 @@ PreCommit:
   HamlLint:
     enabled: true
     include: "app/views/**/*.haml"
-
-PrePush:
   RuboCop:
    enabled: true
   RbPrettier:

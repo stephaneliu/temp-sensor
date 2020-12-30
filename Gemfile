@@ -7,8 +7,8 @@ ruby "2.6.6"
 
 gem "rails", "~> 6.0.3", ">= 6.0.3.4"
 
-gem "awesome_print"
 gem "annotate"
+gem "awesome_print"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "clearance", "~> 2.3"
 gem "haml-rails", "~> 2.0"
