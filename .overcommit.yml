@@ -47,7 +47,7 @@ PostCheckout:
     quiet: false
   # Runs `bundle install` when a change is detected in the repository's dependencies
   BundleInstall:
-    enabled: true
+    enabled: false
   # Generate a tags file with `ctags` each time HEAD changes
   IndexTags:
     enabled: true
