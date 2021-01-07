@@ -49,6 +49,7 @@ RSpec/DescribeClass:
     - "spec/routing/*"
     - "spec/features/**/*"
     - "spec/system/**/*"
+    - "spec/lib/tasks/**/*"
 
 RSpec/ExampleLength:
   Exclude:
@@ -86,6 +87,9 @@ Style/StringLiterals:
   EnforcedStyle: "double_quotes"
   Exclude:
     - "Guardfile"
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: "double_quotes"
 
 Style/TrailingCommaInArrayLiteral:
   Enabled: false

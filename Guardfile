@@ -38,7 +38,7 @@ group :rgr, halt_on_fail: true do
     cmd: "bin/rspec --color --format doc",
     failed_mode: :keep,
     run_all: { cmd: "COVERAGE=true DISABLE_SPRING=true bin/rspec" },
-    all_on_start: true,
+    all_on_start: false,
     all_after_pass: true,
   }
 
@@ -79,6 +79,9 @@ group :rgr, halt_on_fail: true do
     # Capybara features specs
     watch(rails.view_dirs) { |m| rspec.spec.call("features/\#{m[1]}") }
     watch(rails.layouts) { |m| rspec.spec.call("features/\#{m[1]}") }
+
+    # rake tasks
+    watch(%r{^(lib/.+)\.rake}) { |m| "spec/#{m[1]}_rake_spec.rb" }
   end
 
   guard "rubycritic" do
