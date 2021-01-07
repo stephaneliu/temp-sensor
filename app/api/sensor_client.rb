@@ -5,7 +5,5 @@ class SensorClient < ApiStruct::Client
 
   def show(id)
     get(path: "get/?id=#{id}")
-  rescue SwarmAccessError => e
-    Rails.logger.error("Error accessing Swarm API: #{e.message}")
   end
 end

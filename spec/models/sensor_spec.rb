@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: sensors
@@ -15,14 +17,14 @@
 #
 #  index_sensors_on_location_id  (location_id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Sensor, type: :model do
   describe "validations" do
-    specify do
-      is_expected.to validate_presence_of(:reference_id)
-      is_expected.to validate_presence_of(:serial)
-      is_expected.to validate_presence_of(:last_reported_date_time)
-    end
+    specify { expect(described_class.new).to validate_presence_of(:reference_id) }
+
+    specify { expect(described_class.new).to validate_presence_of(:serial) }
+
+    specify { expect(described_class.new).to validate_presence_of(:last_reported_date_time) }
   end
 end

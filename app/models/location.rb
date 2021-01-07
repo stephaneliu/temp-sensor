@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: locations
@@ -16,5 +18,4 @@
 #
 #  index_locations_on_user_id  (user_id)
 #
-class Location < ApplicationRecord
-end
+class Location < ApplicationRecord; end
