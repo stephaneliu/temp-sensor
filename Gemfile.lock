@@ -107,6 +107,8 @@ GEM
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.1.7)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     crass (1.0.6)
     cuprite (0.11)
       capybara (>= 2.1, < 4)
@@ -218,6 +220,7 @@ GEM
       rainbow
       rubocop (>= 0.50.0)
       sysexits (~> 1.1)
+    hashdiff (1.0.0)
     hashie (4.1.0)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
@@ -392,6 +395,7 @@ GEM
       tty-which (~> 0.4.0)
       virtus (~> 1.0)
     rubyzip (2.3.0)
+    safe_yaml (1.0.5)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -448,6 +452,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.7)
     unicode-display_width (1.7.0)
+    vcr (5.0.0)
     virtus (1.0.5)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -458,6 +463,10 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webmock (3.6.2)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     webpacker (4.3.0)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
@@ -519,7 +528,9 @@ DEPENDENCIES
   terminal-notifier
   terminal-notifier-guard
   turbolinks (~> 5)
+  vcr
   web-console (>= 3.3.0)
+  webmock
   webpacker (~> 4.0)
 
 RUBY VERSION
