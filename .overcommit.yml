@@ -39,7 +39,7 @@ PreCommit:
     description: "Lint Ruby files with Prettier"
     requires_files: true
     include: "**/*.rb"
-    flags: ["--check"]
+    flags: ["--list-different"]
 
 PostCheckout:
   ALL:

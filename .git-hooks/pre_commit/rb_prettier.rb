@@ -5,10 +5,13 @@ module Overcommit
     module PreCommit
       class RbPrettier < Base
         def run
-          msg = "Prettier issues. Run `bundle exec rbprettier --write '**/*.rb'`"
           results = execute(command, args: applicable_files)
 
           return :pass if results.success?
+
+          msg =
+            "The following file(s) failed Prettier linting:\n\n#{results.stdout}\n" \
+              "Run bundle exec rbprettier --write '**/*.rb'"
 
           [Overcommit::Hook::Message.new(:error, nil, nil, msg)]
         end
