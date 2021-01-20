@@ -1,0 +1,14 @@
+linters:
+
+  LineLength:
+    enabled: false
+
+  SpaceInsideHashAttributes:
+    enabled: false
+
+  RuboCop:
+    ignored_cops:
+      - Style/WordArray
+      - Style/FrozenStringLiteralComment
+      - Layout/LineLength
+      - Layout/TrailingEmptyLines
