@@ -1,11 +1,15 @@
 module.exports = {
-  purge: [
+  purge: {
+    content: [
     './app/**/*.html.erb',
+    './app/**/*.html.haml',
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
-    './app/javascript/**/*.vue'
-    // Add any other JS files here (i.e. .jsx, .ts, etc...)
-  ],
+    ],
+    options: {
+      defaultExtractor: content => content.match(/[^<>"{\.'`\s]*[^<>"{\.'`\s:]/g) || [],
+    }
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
